@@ -1,6 +1,9 @@
 import sys 
-#from logger import logging
-from logger import logging
+import sys
+sys.path.append('C:/Users/amran/Documents/mlprojects')
+ 
+
+from src.logger import logging
 def error_message_details(error,error_detail:sys):
     
     _,_,exc_tb=error_detail.exc_info()
