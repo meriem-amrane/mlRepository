@@ -10,7 +10,8 @@ sys.path.append('C:/Users/amran/Documents/mlprojects/src/component')
 from data_transformation import DataTransformation
 from data_transformation import DataTransformationConfig
 from dataclasses import dataclass
-
+from model_trainer import ModelTrainerConfig
+from model_trainer import ModelTrainer
 #
 
 @dataclass
@@ -30,7 +31,7 @@ class DataIngestion:
         logging.info("Enter the data ingestion method or component")
         try: 
             
-            df= pd.read_csv('src/notebook/data/stud.csv')
+            df= pd.read_csv(r'C:\Users\amran\Documents\mlprojects\artifacts\data.csv')
             logging.info('REad the data set as dataframe')
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
             df.to_csv(self.ingestion_config.raw_data_path,index=False,header=True)
@@ -52,4 +53,5 @@ if __name__=="__main__":
     data_transformation=DataTransformation()
     train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data)
 
-  
+    modeltrainer=ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
